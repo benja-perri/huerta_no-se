@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerta Escolar Raíces del Patio — 6.° 3.ª</title>
+</head>
+<body>
+  <a class="saltar" href="#objetivo">Saltar al contenido</a>
+  <div class="cuaderno">
+    <header id="titulo">
+      <div class="fila-meta">
+        <p class="kicker">Laboratorio de Programación · 6.° año · 3.ª división</p>
+        <div class="sello" aria-hidden="true">
+          <div>
+            <strong>6.° 3.ª</strong>
+            ciclo 2026
+          </div>
+        </div>
+      </div>
+      <h1>Huerta escolar Raíces del Patio</h1>
+      <p class="subtitulo">Proyecto agroecológico del patio sur · ciclo lectivo 2026</p>
+      <nav aria-label="Secciones de la página">
+        <a href="#objetivo">Objetivo</a>
+        <a href="#especies">Especies cultivadas</a>
+        <a href="#cronograma">Cronograma de tareas</a>
+        <a href="#riego">Riego</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="objetivo" class="seccion">
+        <p class="rotulo">01 — Propósito</p>
+        <h2>Objetivo del proyecto</h2>
+        <p>
+          Instalar y sostener una huerta agroecológica en el patio sur de la escuela
+          para producir hortalizas de estación, registrar riego y cosecha, y articular
+          biología, matemática y programación en un mismo espacio de trabajo.
+        </p>
+        <p>
+          El grupo se hace cargo de cuatro canteros (A, B, C y D), un rincón de compost
+          y la bitácora digital de riego que se genera en esta misma página.
+        </p>
+        <div class="metas">
+          <article class="meta">
+            <span>01</span>
+            <p>Producir verdura de hoja y fruto para el comedor escolar entre mayo y diciembre.</p>
+          </article>
+          <article class="meta">
+            <span>02</span>
+            <p>Medir intervalos de riego reales por especie, no un calendario genérico.</p>
+          </article>
+          <article class="meta">
+            <span>03</span>
+            <p>Dejar documentado el proceso con HTML, CSS, JavaScript y un repositorio público.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="especies" class="seccion">
+        <p class="rotulo">02 — Catálogo de canteros</p>
+        <h2>Especies cultivadas</h2>
+        <p style="margin-bottom:16px;max-width:62ch;">
+          Ocho cultivos de estación templada, elegidos porque cierran bien el ciclo
+          lectivo: hay hoja rápida, raíz, fruto y una perenne. Los días de riego de
+          cada sobre coinciden con la variable que usa la función <code>regarHuerta()</code>.
+        </p>
+        <div class="catalogo">
+          <article class="especie" data-especie="Lechuga mantecosa" data-cantero="A">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40c0-10 8-14 8-22 0-5-3-8-8-8s-8 3-8 8c0 8 8 12 8 22Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 22c-6 2-9 8-8 12 6 0 10-4 12-8M32 22c6 2 9 8 8 12-6 0-10-4-12-8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Lechuga mantecosa</h3>
+              <span class="cantero">Cantero A</span>
+            </header>
+            <p class="cientifico">Lactuca sativa</p>
+            <dl>
+              <dt>Siembra</dt><dd>15 ago y 10 mar</dd>
+              <dt>Cosecha</dt><dd>40 a 50 días</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Tomate cherry" data-cantero="B">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="18" cy="28" r="6" stroke="currentColor" stroke-width="2"/>
+              <circle cx="30" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="33" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 14c2 4 8 6 12 4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Tomate cherry</h3>
+              <span class="cantero">Cantero B</span>
+            </header>
+            <p class="cientifico">Solanum lycopersicum var. cerasiforme</p>
+            <dl>
+              <dt>Almácigo</dt><dd>10 de agosto</dd>
+              <dt>Trasplante</dt><dd>12 de septiembre</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Albahaca genovesa" data-cantero="B">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40V18" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="18" cy="20" rx="7" ry="10" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="30" cy="18" rx="7" ry="10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Albahaca genovesa</h3>
+              <span class="cantero">Cantero B</span>
+            </header>
+            <p class="cientifico">Ocimum basilicum</p>
+            <dl>
+              <dt>Compañera</dt><dd>entre los tomates</dd>
+              <dt>Trasplante</dt><dd>septiembre</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Zanahoria Nantes" data-cantero="C">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 14v26" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 18c-4 8-8 16-8 22h16c0-6-4-14-8-22Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 14c-4-6-9-8-12-8M24 14c4-6 9-8 12-8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Zanahoria Nantes</h3>
+              <span class="cantero">Cantero C</span>
+            </header>
+            <p class="cientifico">Daucus carota</p>
+            <dl>
+              <dt>Siembra</dt><dd>directa, 20 de agosto</dd>
+              <dt>Suelo</dt><dd>suelto, sin compactar</dd>
+              <dt>Riego</dt><dd>cada 4 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Acelga de penca blanca" data-cantero="A">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 42V16" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 20c-10 2-14 10-14 16 8 0 12-6 14-10 2 4 6 10 14 10 0-6-4-14-14-16Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Acelga de penca blanca</h3>
+              <span class="cantero">Cantero A</span>
+            </header>
+            <p class="cientifico">Beta vulgaris var. cicla</p>
+            <dl>
+              <dt>Siembra</dt><dd>5 mar y 1 sep</dd>
+              <dt>Cosecha</dt><dd>hoja por hoja</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Perejil liso" data-cantero="Bordura">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40V22" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 24c-8-2-12-10-8-14M24 24c8-2 12-10 8-14M24 28c-9 2-12 8-8 12M24 28c9 2 12 8 8 12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Perejil liso</h3>
+              <span class="cantero">Bordura</span>
+            </header>
+            <p class="cientifico">Petroselinum crispum</p>
+            <dl>
+              <dt>Lugar</dt><dd>bordes de A y C</dd>
+              <dt>Uso</dt><dd>corte continuo</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Rabanito redondo rojo" data-cantero="C">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="30" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 21c-3-8-8-12-12-13M24 21c3-8 8-12 12-13" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Rabanito redondo rojo</h3>
+              <span class="cantero">Cantero C</span>
+            </header>
+            <p class="cientifico">Raphanus sativus</p>
+            <dl>
+              <dt>Siembra</dt><dd>entrelíneas, cada 20 días</dd>
+              <dt>Cosecha</dt><dd>25 días</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Frutilla" data-cantero="D">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 16c8 2 12 8 12 14 0 8-6 14-12 14S12 38 12 30c0-6 4-12 12-14Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 16c4-8 8-10 8-10s4 2 8 10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Frutilla</h3>
+              <span class="cantero">Cantero D</span>
+            </header>
+            <p class="cientifico">Fragaria × ananassa</p>
+            <dl>
+              <dt>Tipo</dt><dd>perenne, cantero propio</dd>
+              <dt>Cosecha</dt><dd>primavera y fines de verano</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="cronograma" class="seccion">
+        <p class="rotulo">03 — Calendario de patio</p>
+        <h2>Cronograma de tareas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Tarea principal</th>
+              <th>Responsable de cantero</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mes">Marzo</td>
+              <td>Desmalezar, incorporar compost y armar los cuatro canteros con pasillos de 40 cm.</td>
+              <td>Todo el grupo</td>
+            </tr>
+            <tr>
+              <td class="mes">Abril</td>
+              <td>Siembra de lechuga, acelga y perejil de otoño. Colocar cartelera de especies.</td>
+              <td>Cantero A</td>
+            </tr>
+            <tr>
+              <td class="mes">Mayo</td>
+              <td>Primera cosecha de hoja. Registro de germinación en la bitácora.</td>
+              <td>Cantero A y bordura</td>
+            </tr>
+            <tr>
+              <td class="mes">Junio–julio</td>
+              <td>Cobertura de suelo, riego reducido y mantenimiento del compost.</td>
+              <td>Rotativo</td>
+            </tr>
+            <tr>
+              <td class="mes">Agosto</td>
+              <td>Almácigo de tomate cherry y albahaca. Siembra directa de zanahoria y rabanito.</td>
+              <td>Canteros B y C</td>
+            </tr>
+            <tr>
+              <td class="mes">Septiembre</td>
+              <td>Trasplante de tomate y albahaca. Tutorado. Inicio del riego de primavera.</td>
+              <td>Cantero B</td>
+            </tr>
+            <tr>
+              <td class="mes">Octubre</td>
+              <td>Riego más frecuente, desbrote de tomate y control de pulgón con agua y jabón blanco.</td>
+              <td>Canteros B y D</td>
+            </tr>
+            <tr>
+              <td class="mes">Noviembre</td>
+              <td>Cosecha de cherry, albahaca y rabanito. Segunda siembra de lechuga.</td>
+              <td>Todo el grupo</td>
+            </tr>
+            <tr>
+              <td class="mes">Diciembre</td>
+              <td>Cosecha final, guardado de semillas de albahaca y cierre de la bitácora anual.</td>
+              <td>Todo el grupo</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="riego" class="seccion">
+        <p class="rotulo">04 — Bitácora de agua</p>
+        <h2>Regar la huerta</h2>
+        <p>
+          El botón llama a <code>regarHuerta()</code>, una función sin parámetros que
+          arma el calendario de los próximos 14 días usando los intervalos de cada
+          especie de esta página. El resultado se imprime en la consola del navegador
+          y también acá abajo.
+        </p>
+        <div class="acciones">
+          <button class="btn" id="btn-regar" type="button">Regar la huerta</button>
+          <button class="btn secundario" id="btn-limpiar" type="button">Limpiar panel</button>
+        </div>
+        <pre id="panel-riego" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>Grupo no-se · Benjamin Zaracho · 6.° 3.ª · Laboratorio de Programación · 2026</p>
+    </footer>
+  </div>
+
+</body>
+</html>
