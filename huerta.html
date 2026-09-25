@@ -668,5 +668,76 @@
     </footer>
   </div>
 
+  <script>
+    // Intervalos reales de la huerta, en días. El nombre lo eligió el grupo
+    // para no repetir ejemplos de clase. Para las raíces pivotantes tomamos
+    // el cultivar zanahoria_beta como referencia del cantero C: se riega
+    // más espaciado para no compactar el suelo ni rajar la raíz.
+    const cicloDeRiegoRaicesDelPatio = {
+      "Lechuga mantecosa": 2,
+      "Tomate cherry": 3,
+      "Albahaca genovesa": 2,
+      "Zanahoria Nantes": 4,
+      "Acelga de penca blanca": 3,
+      "Perejil liso": 2,
+      "Rabanito redondo rojo": 2,
+      "Frutilla": 3
+    };
+
+    const nombresDia = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+
+    function formatearFecha(fecha) {
+      const dia = String(fecha.getDate()).padStart(2, "0");
+      const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+      return nombresDia[fecha.getDay()] + " " + dia + "/" + mes;
+    }
+
+    function regarHuerta() {
+      const hoy = new Date();
+      const lineas = [];
+      lineas.push("Cronograma de riego — Huerta Raíces del Patio");
+      lineas.push("Generado el " + formatearFecha(hoy) + " · próximos 14 días");
+      lineas.push("------------------------------------------------");
+
+      Object.keys(cicloDeRiegoRaicesDelPatio).forEach(function (especie) {
+        const intervalo = cicloDeRiegoRaicesDelPatio[especie];
+        const turnos = [];
+        for (let d = 0; d < 14; d += 1) {
+          if (d % intervalo === 0) {
+            const fecha = new Date(hoy);
+            fecha.setDate(hoy.getDate() + d);
+            turnos.push(formatearFecha(fecha));
+          }
+        }
+        lineas.push(especie + " (cada " + intervalo + " día/s): " + turnos.join(" · "));
+      });
+
+      const texto = lineas.join("\n");
+      console.log(texto);
+      const panel = document.getElementById("panel-riego");
+      if (panel) {
+        panel.textContent = texto;
+      }
+      return texto;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const botonRegar = document.getElementById("btn-regar");
+      const botonLimpiar = document.getElementById("btn-limpiar");
+      const panel = document.getElementById("panel-riego");
+
+      if (botonRegar) {
+        botonRegar.addEventListener("click", function () {
+          regarHuerta();
+        });
+      }
+
+      if (botonLimpiar && panel) {
+        botonLimpiar.addEventListener("click", function () {
+          panel.textContent = "";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
