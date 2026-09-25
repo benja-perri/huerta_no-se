@@ -4,6 +4,383 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huerta Escolar Raíces del Patio — 6.° 3.ª</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tierra: #3c2a1e;
+      --hoja: #1f4d32;
+      --hoja-media: #2f6a46;
+      --crema: #f4ead6;
+      --papel: #fbf6ea;
+      --arcilla: #c4612c;
+      --tinta: #1e1a16;
+      --linea: #d7c9ae;
+      --sage: #7d9a74;
+      --sombra: 0 18px 40px rgba(60, 42, 30, 0.12);
+      --radio: 18px;
+      --fuente-titulo: "Fraunces", Georgia, serif;
+      --fuente-cuerpo: "Outfit", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fuente-cuerpo);
+      color: var(--tinta);
+      background:
+        radial-gradient(circle at 12% 8%, #e7d7b3 0 2px, transparent 3px) 0 0 / 28px 28px,
+        linear-gradient(180deg, #e8d7b8 0%, var(--crema) 220px);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a { color: var(--hoja); }
+    img, svg { max-width: 100%; display: block; }
+    button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+
+    .saltar {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--hoja);
+      color: var(--papel);
+      padding: 8px 14px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+    .saltar:focus { left: 8px; }
+
+    .cuaderno {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 16px 64px;
+    }
+
+    /* ——— Título del proyecto ——— */
+    #titulo {
+      background: var(--papel);
+      border: 2px solid var(--tierra);
+      border-radius: var(--radio);
+      padding: 28px 24px 22px;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    #titulo::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--linea);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    #titulo .fila-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--hoja);
+      font-weight: 600;
+    }
+
+    .sello {
+      width: 86px;
+      height: 86px;
+      border: 2px dashed var(--arcilla);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--arcilla);
+      transform: rotate(8deg);
+      font-family: var(--fuente-titulo);
+      line-height: 1.15;
+      flex-shrink: 0;
+    }
+
+    .sello strong { display: block; font-size: 1.15rem; }
+
+    #titulo h1 {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      color: var(--hoja);
+      margin: 14px 0 8px;
+      max-width: 14ch;
+    }
+
+    #titulo .subtitulo {
+      font-family: var(--fuente-titulo);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--tierra);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      background: var(--crema);
+      border: 1px solid var(--linea);
+      color: var(--tierra);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    nav a:hover { background: #efe3c8; }
+
+    .seccion {
+      background: var(--papel);
+      border: 1px solid var(--linea);
+      border-radius: var(--radio);
+      padding: 28px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(60, 42, 30, 0.06);
+    }
+
+    .rotulo {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--arcilla);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      color: var(--hoja);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    /* ——— Objetivo ——— */
+    #objetivo {
+      border-left: 8px solid var(--hoja);
+    }
+
+    #objetivo p { margin-bottom: 12px; max-width: 65ch; }
+
+    .metas {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .meta {
+      background: var(--crema);
+      border-radius: 14px;
+      padding: 16px 16px 16px 18px;
+      border: 1px solid var(--linea);
+    }
+
+    .meta span {
+      display: block;
+      font-family: var(--fuente-titulo);
+      color: var(--arcilla);
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    /* ——— Especies cultivadas ——— */
+    #especies {
+      background:
+        linear-gradient(180deg, #f7f1e3, var(--papel));
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .especie {
+      border: 2px solid var(--tierra);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fffaf0;
+      position: relative;
+      min-height: 210px;
+    }
+
+    .especie header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .especie h3 {
+      font-family: var(--fuente-titulo);
+      font-size: 1.35rem;
+      color: var(--hoja);
+      line-height: 1.15;
+    }
+
+    .especie .cientifico {
+      font-style: italic;
+      color: #5c5348;
+      font-size: 0.86rem;
+      margin-bottom: 10px;
+    }
+
+    .cantero {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--hoja);
+      color: var(--papel);
+      padding: 6px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .especie dl {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 6px 8px;
+      font-size: 0.92rem;
+    }
+
+    .especie dt { color: #6a6156; font-weight: 600; }
+
+    .icono-planta { width: 48px; height: 48px; color: var(--hoja-media); margin-bottom: 6px; }
+
+    /* ——— Cronograma de tareas ——— */
+    #cronograma { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--linea);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hoja);
+    }
+
+    tbody tr:hover { background: #f3ead6; }
+
+    .mes {
+      font-weight: 700;
+      color: var(--tierra);
+      white-space: nowrap;
+    }
+
+    /* ——— Panel de riego (funcionalidad JS) ——— */
+    #riego {
+      background: var(--tierra);
+      color: var(--crema);
+      border: 0;
+    }
+
+    #riego h2 { color: #f4ead6; }
+    #riego .rotulo { color: #e7b089; }
+
+    #riego p { max-width: 62ch; margin-bottom: 16px; color: #eadcc3; }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      border: 0;
+      background: var(--arcilla);
+      color: #fffaf0;
+      font-family: var(--fuente-cuerpo);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 18px;
+      min-height: 48px;
+      border-radius: 999px;
+    }
+
+    .btn:hover { filter: brightness(1.08); }
+    .btn.secundario { background: transparent; color: var(--crema); border: 1px solid #8a6f55; }
+
+    #panel-riego {
+      background: #2b1e15;
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 92px;
+      font-family: ui-monospace, "Cascadia Code", monospace;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      color: #e8d7b3;
+    }
+
+    #panel-riego:empty::before {
+      content: "Todavía no se generó el cronograma. Pulsá «Regar la huerta».";
+      color: #b7a48a;
+    }
+
+    footer {
+      text-align: center;
+      color: #6a6156;
+      font-size: 0.88rem;
+      padding: 8px;
+    }
+
+    @media (min-width: 700px) {
+      .cuaderno { padding: 36px 24px 80px; }
+      #titulo { padding: 36px 40px 28px; }
+      .metas { grid-template-columns: repeat(3, 1fr); }
+      .catalogo { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 980px) {
+      .catalogo { grid-template-columns: repeat(4, 1fr); }
+      .especie { min-height: 280px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .sello { transform: none; }
+    }
+  </style>
 </head>
 <body>
   <a class="saltar" href="#objetivo">Saltar al contenido</a>
