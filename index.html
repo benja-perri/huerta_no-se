@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerta Escolar Raíces del Patio — 6.° 3.ª</title>
+  <meta name="description" content="Sitio web de la huerta escolar Raíces del Patio, proyecto agroecológico de 6.° 3.ª durante el ciclo lectivo 2026.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tierra: #3c2a1e;
+      --hoja: #1f4d32;
+      --hoja-media: #2f6a46;
+      --crema: #f4ead6;
+      --papel: #fbf6ea;
+      --arcilla: #c4612c;
+      --tinta: #1e1a16;
+      --linea: #d7c9ae;
+      --sage: #7d9a74;
+      --sombra: 0 18px 40px rgba(60, 42, 30, 0.12);
+      --radio: 18px;
+      --fuente-titulo: "Fraunces", Georgia, serif;
+      --fuente-cuerpo: "Outfit", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fuente-cuerpo);
+      color: var(--tinta);
+      background:
+        radial-gradient(circle at 12% 8%, #e7d7b3 0 2px, transparent 3px) 0 0 / 28px 28px,
+        linear-gradient(180deg, #e8d7b8 0%, var(--crema) 220px);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a { color: var(--hoja); }
+    img, svg { max-width: 100%; display: block; }
+    button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+
+    .saltar {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--hoja);
+      color: var(--papel);
+      padding: 8px 14px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+    .saltar:focus { left: 8px; }
+
+    .cuaderno {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 16px 64px;
+    }
+
+    /* ——— Título del proyecto ——— */
+    #titulo {
+      background: var(--papel);
+      border: 2px solid var(--tierra);
+      border-radius: var(--radio);
+      padding: 28px 24px 22px;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    #titulo::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--linea);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    #titulo .fila-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--hoja);
+      font-weight: 600;
+    }
+
+    .sello {
+      width: 86px;
+      height: 86px;
+      border: 2px dashed var(--arcilla);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--arcilla);
+      transform: rotate(8deg);
+      font-family: var(--fuente-titulo);
+      line-height: 1.15;
+      flex-shrink: 0;
+    }
+
+    .sello strong { display: block; font-size: 1.15rem; }
+
+    #titulo h1 {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      color: var(--hoja);
+      margin: 14px 0 8px;
+      max-width: 14ch;
+    }
+
+    #titulo .subtitulo {
+      font-family: var(--fuente-titulo);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--tierra);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      background: var(--crema);
+      border: 1px solid var(--linea);
+      color: var(--tierra);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    nav a:hover { background: #efe3c8; }
+
+    .seccion {
+      background: var(--papel);
+      border: 1px solid var(--linea);
+      border-radius: var(--radio);
+      padding: 28px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(60, 42, 30, 0.06);
+    }
+
+    .rotulo {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--arcilla);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      color: var(--hoja);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    /* ——— Objetivo ——— */
+    #objetivo {
+      border-left: 8px solid var(--hoja);
+    }
+
+    #objetivo p { margin-bottom: 12px; max-width: 65ch; }
+
+    .metas {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .meta {
+      background: var(--crema);
+      border-radius: 14px;
+      padding: 16px 16px 16px 18px;
+      border: 1px solid var(--linea);
+    }
+
+    .meta span {
+      display: block;
+      font-family: var(--fuente-titulo);
+      color: var(--arcilla);
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    /* ——— Especies cultivadas ——— */
+    #especies {
+      background:
+        linear-gradient(180deg, #f7f1e3, var(--papel));
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .especie {
+      border: 2px solid var(--tierra);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fffaf0;
+      position: relative;
+      min-height: 210px;
+    }
+
+    .especie header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .especie h3 {
+      font-family: var(--fuente-titulo);
+      font-size: 1.35rem;
+      color: var(--hoja);
+      line-height: 1.15;
+    }
+
+    .especie .cientifico {
+      font-style: italic;
+      color: #5c5348;
+      font-size: 0.86rem;
+      margin-bottom: 10px;
+    }
+
+    .cantero {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--hoja);
+      color: var(--papel);
+      padding: 6px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .especie dl {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 6px 8px;
+      font-size: 0.92rem;
+    }
+
+    .especie dt { color: #6a6156; font-weight: 600; }
+
+    .icono-planta { width: 48px; height: 48px; color: var(--hoja-media); margin-bottom: 6px; }
+
+    /* ——— Cronograma de tareas ——— */
+    #cronograma { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--linea);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hoja);
+    }
+
+    tbody tr:hover { background: #f3ead6; }
+
+    .mes {
+      font-weight: 700;
+      color: var(--tierra);
+      white-space: nowrap;
+    }
+
+    /* ——— Panel de riego (funcionalidad JS) ——— */
+    #riego {
+      background: var(--tierra);
+      color: var(--crema);
+      border: 0;
+    }
+
+    #riego h2 { color: #f4ead6; }
+    #riego .rotulo { color: #e7b089; }
+
+    #riego p { max-width: 62ch; margin-bottom: 16px; color: #eadcc3; }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      border: 0;
+      background: var(--arcilla);
+      color: #fffaf0;
+      font-family: var(--fuente-cuerpo);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 18px;
+      min-height: 48px;
+      border-radius: 999px;
+    }
+
+    .btn:hover { filter: brightness(1.08); }
+    .btn.secundario { background: transparent; color: var(--crema); border: 1px solid #8a6f55; }
+
+    #panel-riego {
+      background: #2b1e15;
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 92px;
+      font-family: ui-monospace, "Cascadia Code", monospace;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      color: #e8d7b3;
+    }
+
+    #panel-riego:empty::before {
+      content: "Todavía no se generó el cronograma. Pulsá «Regar la huerta».";
+      color: #b7a48a;
+    }
+
+    footer {
+      text-align: center;
+      color: #6a6156;
+      font-size: 0.88rem;
+      padding: 8px;
+    }
+
+    @media (min-width: 700px) {
+      .cuaderno { padding: 36px 24px 80px; }
+      #titulo { padding: 36px 40px 28px; }
+      .metas { grid-template-columns: repeat(3, 1fr); }
+      .catalogo { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 980px) {
+      .catalogo { grid-template-columns: repeat(4, 1fr); }
+      .especie { min-height: 280px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .sello { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="saltar" href="#objetivo">Saltar al contenido</a>
+  <div class="cuaderno">
+    <header id="titulo">
+      <div class="fila-meta">
+        <p class="kicker">Laboratorio de Programación · 6.° año · 3.ª división</p>
+        <div class="sello" aria-hidden="true">
+          <div>
+            <strong>6.° 3.ª</strong>
+            ciclo 2026
+          </div>
+        </div>
+      </div>
+      <h1>Huerta escolar Raíces del Patio</h1>
+      <p class="subtitulo">Proyecto agroecológico del patio sur · ciclo lectivo 2026</p>
+      <nav aria-label="Secciones de la página">
+        <a href="#objetivo">Objetivo</a>
+        <a href="#especies">Especies cultivadas</a>
+        <a href="#cronograma">Cronograma de tareas</a>
+        <a href="calendario.html">Calendario de siembra</a>
+        <a href="#riego">Riego</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="objetivo" class="seccion">
+        <p class="rotulo">01 — Propósito</p>
+        <h2>Objetivo del proyecto</h2>
+        <p>
+          Instalar y sostener una huerta agroecológica en el patio sur de la escuela
+          para producir hortalizas de estación, registrar riego y cosecha, y articular
+          biología, matemática y programación en un mismo espacio de trabajo.
+        </p>
+        <p>
+          El grupo se hace cargo de cuatro canteros (A, B, C y D), un rincón de compost
+          y la bitácora digital de riego que se genera en esta misma página.
+        </p>
+        <div class="metas">
+          <article class="meta">
+            <span>01</span>
+            <p>Producir verdura de hoja y fruto para el comedor escolar entre mayo y diciembre.</p>
+          </article>
+          <article class="meta">
+            <span>02</span>
+            <p>Medir intervalos de riego reales por especie, no un calendario genérico.</p>
+          </article>
+          <article class="meta">
+            <span>03</span>
+            <p>Dejar documentado el proceso con HTML, CSS, JavaScript y un repositorio público.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="especies" class="seccion">
+        <p class="rotulo">02 — Catálogo de canteros</p>
+        <h2>Especies cultivadas</h2>
+        <p style="margin-bottom:16px;max-width:62ch;">
+          Ocho cultivos de estación templada, elegidos porque cierran bien el ciclo
+          lectivo: hay hoja rápida, raíz, fruto y una perenne. Los días de riego de
+          cada sobre coinciden con la variable que usa la función <code>regarHuerta()</code>.
+        </p>
+        <div class="catalogo">
+          <article class="especie" data-especie="Lechuga mantecosa" data-cantero="A">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40c0-10 8-14 8-22 0-5-3-8-8-8s-8 3-8 8c0 8 8 12 8 22Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 22c-6 2-9 8-8 12 6 0 10-4 12-8M32 22c6 2 9 8 8 12-6 0-10-4-12-8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Lechuga mantecosa</h3>
+              <span class="cantero">Cantero A</span>
+            </header>
+            <p class="cientifico">Lactuca sativa</p>
+            <dl>
+              <dt>Siembra</dt><dd>15 ago y 10 mar</dd>
+              <dt>Cosecha</dt><dd>40 a 50 días</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Tomate cherry" data-cantero="B">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="18" cy="28" r="6" stroke="currentColor" stroke-width="2"/>
+              <circle cx="30" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="33" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 14c2 4 8 6 12 4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Tomate cherry</h3>
+              <span class="cantero">Cantero B</span>
+            </header>
+            <p class="cientifico">Solanum lycopersicum var. cerasiforme</p>
+            <dl>
+              <dt>Almácigo</dt><dd>10 de agosto</dd>
+              <dt>Trasplante</dt><dd>12 de septiembre</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Albahaca genovesa" data-cantero="B">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40V18" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="18" cy="20" rx="7" ry="10" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="30" cy="18" rx="7" ry="10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Albahaca genovesa</h3>
+              <span class="cantero">Cantero B</span>
+            </header>
+            <p class="cientifico">Ocimum basilicum</p>
+            <dl>
+              <dt>Compañera</dt><dd>entre los tomates</dd>
+              <dt>Trasplante</dt><dd>septiembre</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Zanahoria Nantes" data-cantero="C">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 14v26" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 18c-4 8-8 16-8 22h16c0-6-4-14-8-22Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 14c-4-6-9-8-12-8M24 14c4-6 9-8 12-8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Zanahoria Nantes</h3>
+              <span class="cantero">Cantero C</span>
+            </header>
+            <p class="cientifico">Daucus carota</p>
+            <dl>
+              <dt>Siembra</dt><dd>directa, 20 de agosto</dd>
+              <dt>Suelo</dt><dd>suelto, sin compactar</dd>
+              <dt>Riego</dt><dd>cada 4 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Acelga de penca blanca" data-cantero="A">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 42V16" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 20c-10 2-14 10-14 16 8 0 12-6 14-10 2 4 6 10 14 10 0-6-4-14-14-16Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Acelga de penca blanca</h3>
+              <span class="cantero">Cantero A</span>
+            </header>
+            <p class="cientifico">Beta vulgaris var. cicla</p>
+            <dl>
+              <dt>Siembra</dt><dd>5 mar y 1 sep</dd>
+              <dt>Cosecha</dt><dd>hoja por hoja</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Perejil liso" data-cantero="Bordura">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 40V22" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 24c-8-2-12-10-8-14M24 24c8-2 12-10 8-14M24 28c-9 2-12 8-8 12M24 28c9 2 12 8 8 12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Perejil liso</h3>
+              <span class="cantero">Bordura</span>
+            </header>
+            <p class="cientifico">Petroselinum crispum</p>
+            <dl>
+              <dt>Lugar</dt><dd>bordes de A y C</dd>
+              <dt>Uso</dt><dd>corte continuo</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Rabanito redondo rojo" data-cantero="C">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="30" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 21c-3-8-8-12-12-13M24 21c3-8 8-12 12-13" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Rabanito redondo rojo</h3>
+              <span class="cantero">Cantero C</span>
+            </header>
+            <p class="cientifico">Raphanus sativus</p>
+            <dl>
+              <dt>Siembra</dt><dd>entrelíneas, cada 20 días</dd>
+              <dt>Cosecha</dt><dd>25 días</dd>
+              <dt>Riego</dt><dd>cada 2 días</dd>
+            </dl>
+          </article>
+
+          <article class="especie" data-especie="Frutilla" data-cantero="D">
+            <svg class="icono-planta" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 16c8 2 12 8 12 14 0 8-6 14-12 14S12 38 12 30c0-6 4-12 12-14Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 16c4-8 8-10 8-10s4 2 8 10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <header>
+              <h3>Frutilla</h3>
+              <span class="cantero">Cantero D</span>
+            </header>
+            <p class="cientifico">Fragaria × ananassa</p>
+            <dl>
+              <dt>Tipo</dt><dd>perenne, cantero propio</dd>
+              <dt>Cosecha</dt><dd>primavera y fines de verano</dd>
+              <dt>Riego</dt><dd>cada 3 días</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="cronograma" class="seccion">
+        <p class="rotulo">03 — Calendario de patio</p>
+        <h2>Cronograma de tareas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Tarea principal</th>
+              <th>Responsable de cantero</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mes">Marzo</td>
+              <td>Desmalezar, incorporar compost y armar los cuatro canteros con pasillos de 40 cm.</td>
+              <td>Todo el grupo</td>
+            </tr>
+            <tr>
+              <td class="mes">Abril</td>
+              <td>Siembra de lechuga, acelga y perejil de otoño. Colocar cartelera de especies.</td>
+              <td>Cantero A</td>
+            </tr>
+            <tr>
+              <td class="mes">Mayo</td>
+              <td>Primera cosecha de hoja. Registro de germinación en la bitácora.</td>
+              <td>Cantero A y bordura</td>
+            </tr>
+            <tr>
+              <td class="mes">Junio–julio</td>
+              <td>Cobertura de suelo, riego reducido y mantenimiento del compost.</td>
+              <td>Rotativo</td>
+            </tr>
+            <tr>
+              <td class="mes">Agosto</td>
+              <td>Almácigo de tomate cherry y albahaca. Siembra directa de zanahoria y rabanito.</td>
+              <td>Canteros B y C</td>
+            </tr>
+            <tr>
+              <td class="mes">Septiembre</td>
+              <td>Trasplante de tomate y albahaca. Tutorado. Inicio del riego de primavera.</td>
+              <td>Cantero B</td>
+            </tr>
+            <tr>
+              <td class="mes">Octubre</td>
+              <td>Riego más frecuente, desbrote de tomate y control de pulgón con agua y jabón blanco.</td>
+              <td>Canteros B y D</td>
+            </tr>
+            <tr>
+              <td class="mes">Noviembre</td>
+              <td>Cosecha de cherry, albahaca y rabanito. Segunda siembra de lechuga.</td>
+              <td>Todo el grupo</td>
+            </tr>
+            <tr>
+              <td class="mes">Diciembre</td>
+              <td>Cosecha final, guardado de semillas de albahaca y cierre de la bitácora anual.</td>
+              <td>Todo el grupo</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="riego" class="seccion">
+        <p class="rotulo">04 — Bitácora de agua</p>
+        <h2>Regar la huerta</h2>
+        <p>
+          El botón llama a <code>regarHuerta()</code>, una función sin parámetros que
+          arma el calendario de los próximos 14 días usando los intervalos de cada
+          especie de esta página. El resultado se imprime en la consola del navegador
+          y también acá abajo.
+        </p>
+        <div class="acciones">
+          <button class="btn" id="btn-regar" type="button">Regar la huerta</button>
+          <button class="btn secundario" id="btn-limpiar" type="button">Limpiar panel</button>
+        </div>
+        <pre id="panel-riego" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>Grupo no-se · Benjamin Zaracho · 6.° 3.ª · Laboratorio de Programación · 2026</p>
+    </footer>
+  </div>
+
+  <script>
+    // Intervalos reales de la huerta, en días. El nombre lo eligió el grupo
+    // para no repetir ejemplos de clase. Para las raíces pivotantes tomamos
+    // el cultivar zanahoria_beta como referencia del cantero C: se riega
+    // más espaciado para no compactar el suelo ni rajar la raíz.
+    const cicloDeRiegoRaicesDelPatio = {
+      "Lechuga mantecosa": 2,
+      "Tomate cherry": 3,
+      "Albahaca genovesa": 2,
+      "Zanahoria Nantes": 4,
+      "Acelga de penca blanca": 3,
+      "Perejil liso": 2,
+      "Rabanito redondo rojo": 2,
+      "Frutilla": 3
+    };
+
+    const nombresDia = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+
+    function formatearFecha(fecha) {
+      const dia = String(fecha.getDate()).padStart(2, "0");
+      const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+      return nombresDia[fecha.getDay()] + " " + dia + "/" + mes;
+    }
+
+    function regarHuerta() {
+      const hoy = new Date();
+      const lineas = [];
+      lineas.push("Cronograma de riego — Huerta Raíces del Patio");
+      lineas.push("Generado el " + formatearFecha(hoy) + " · próximos 14 días");
+      lineas.push("------------------------------------------------");
+
+      Object.keys(cicloDeRiegoRaicesDelPatio).forEach(function (especie) {
+        const intervalo = cicloDeRiegoRaicesDelPatio[especie];
+        const turnos = [];
+        for (let d = 0; d < 14; d += 1) {
+          if (d % intervalo === 0) {
+            const fecha = new Date(hoy);
+            fecha.setDate(hoy.getDate() + d);
+            turnos.push(formatearFecha(fecha));
+          }
+        }
+        lineas.push(especie + " (cada " + intervalo + " día/s): " + turnos.join(" · "));
+      });
+
+      const texto = lineas.join("\n");
+      console.log(texto);
+      const panel = document.getElementById("panel-riego");
+      if (panel) {
+        panel.textContent = texto;
+      }
+      return texto;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const botonRegar = document.getElementById("btn-regar");
+      const botonLimpiar = document.getElementById("btn-limpiar");
+      const panel = document.getElementById("panel-riego");
+
+      if (botonRegar) {
+        botonRegar.addEventListener("click", function () {
+          regarHuerta();
+        });
+      }
+
+      if (botonLimpiar && panel) {
+        botonLimpiar.addEventListener("click", function () {
+          panel.textContent = "";
+        });
+      }
+    });
+  </script>
+</body>
+</html>
