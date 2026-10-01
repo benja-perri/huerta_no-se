@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario de siembra — Raíces del Patio</title>
+  <meta name="description" content="Calendario de siembra y tareas de la huerta escolar Raíces del Patio para la zona de la costa bonaerense.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root{--tierra:#3c2a1e;--hoja:#1f4d32;--crema:#f4ead6;--papel:#fbf6ea;--arcilla:#c4612c;--linea:#d7c9ae}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;color:#1e1a16;background:linear-gradient(180deg,#e8d7b8,#f4ead6);line-height:1.55}
+    .contenedor{max-width:1050px;margin:auto;padding:24px 16px 60px}
+    header,.seccion{background:var(--papel);border:1px solid var(--linea);border-radius:18px;padding:26px;margin-bottom:18px}
+    h1,h2{font-family:Georgia,serif;color:var(--hoja)}
+    h1{font-size:clamp(2rem,6vw,3.4rem);margin:8px 0}
+    h2{font-size:2rem}
+    .sub{color:#5d5043}
+    nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+    nav a{padding:10px 14px;border-radius:999px;background:var(--crema);color:var(--tierra);text-decoration:none;font-weight:bold}
+    table{width:100%;border-collapse:collapse}
+    th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+    th{color:var(--hoja)}
+    .nota{border-left:6px solid var(--arcilla);padding:12px 16px;background:#f7edd9;border-radius:8px}
+    @media(max-width:600px){.contenedor{padding:12px 10px 40px}header,.seccion{padding:20px 16px}table{font-size:.9rem}th,td{padding:9px 7px}nav a{flex:1;text-align:center}}
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <p>Laboratorio de Programación · 6.° 3.ª · 2026</p>
+      <h1>Calendario de siembra</h1>
+      <p class="sub">Raíces del Patio · orientación para la huerta escolar en nuestra zona.</p>
+      <nav aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#especies">Especies</a>
+        <a href="index.html#riego">Riego</a>
+      </nav>
+    </header>
+    <main>
+      <section class="seccion">
+        <h2>Qué sembrar según la estación</h2>
+        <p>Este calendario sirve como guía general para organizar la huerta escolar. Las fechas pueden ajustarse según el clima, el estado del suelo y las condiciones reales del patio.</p>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Estación</th><th>Siembras recomendadas</th><th>Tareas</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Otoño</strong></td><td>Lechuga, acelga, perejil, rabanito y zanahoria.</td><td>Preparar canteros, agregar compost y controlar humedad.</td></tr>
+              <tr><td><strong>Invierno</strong></td><td>Acelga, perejil, lechuga y algunas raíces resistentes.</td><td>Proteger plantines, mantener cobertura y reducir el riego según el clima.</td></tr>
+              <tr><td><strong>Primavera</strong></td><td>Tomate, albahaca, rabanito, zanahoria y nuevas tandas de hojas.</td><td>Almácigos, trasplantes, tutorado y aumento progresivo del riego.</td></tr>
+              <tr><td><strong>Verano</strong></td><td>Tomate, albahaca, frutilla y cultivos de ciclo corto.</td><td>Regar temprano o al atardecer, controlar malezas y cosechar con frecuencia.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="seccion">
+        <h2>Tareas hasta la muestra</h2>
+        <p class="nota"><strong>Importante:</strong> el calendario es orientativo. En la huerta real conviene registrar qué se hizo y modificar las tareas cuando cambien las condiciones.</p>
+        <ol>
+          <li>Revisar humedad y estado de los canteros.</li>
+          <li>Registrar siembra, trasplantes y cosechas.</li>
+          <li>Controlar malezas y mantener los pasillos.</li>
+          <li>Actualizar el registro de riego.</li>
+          <li>Preparar una explicación breve para la exposición.</li>
+        </ol>
+      </section>
+    </main>
+    <footer><p>Grupo no-se · Benjamin Zaracho · 6.° 3.ª · 2026</p></footer>
+  </div>
+</body>
+</html>
